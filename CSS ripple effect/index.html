@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Button Ripple Effect</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <button id="btn1">CLICK</button>
+
+    <script>
+        const btn = document.getElementById('btn1')
+
+        const onClick = e => {
+            const {x, y, w, h} = btn.getBoundingClientRect()
+            const radius = Math.sqrt(w * w + h * h)
+            btn.style.setProperty('--diameter', radius * 2 + 'px')
+            const {clientX, clientY} = e
+            const left = (clientX - x - radius) / w * 100 + '%'
+            const top = (clientY - y - radius) / h * 100 + '%'
+
+            btn.style.setProperty('--left', left)
+            btn.style.setProperty('--top', top)
+        }
+
+        btn.addEventListener('click', onClick)
+    </script>
+</body>
+</html>
