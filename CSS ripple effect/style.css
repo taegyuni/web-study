@@ -16,25 +16,27 @@ button {
     font-size: 1.5rem;
     color: #eaeaea;
     font-weight: bold;
-    background-color: #ff2e63;
+    background-color: #14D779;
     box-shadow: 0 3px 12px 0 rgba(0,0,0,0.5);
     border: none;
     cursor: pointer;
     position: relative;
+    --a:initial;
+    overflow: hidden;
 }
 
 button:after{
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    transform: scale(1);
-    background-color: rgba(255,255,255,0.4);
+    top: var(--top);
+    left: var(--left);
+    width: var(--diameter);
+    height: var(--diameter);
+    transform: scale(0);
+    background-color: #88FBC3;
     border-radius: 50%;
     pointer-events: none;
-    animation: ripple-effect 1000ms linear;
+    animation: var(--a);
 }
 
 @keyframes ripple-effect {

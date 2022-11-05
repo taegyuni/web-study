@@ -9,18 +9,23 @@
     <button id="btn1">CLICK</button>
 
     <script>
-        const btn = document.getElementById('btn1')
+        const btn = document.getElementById("btn1")
 
         const onClick = e => {
-            const {x, y, w, h} = btn.getBoundingClientRect()
-            const radius = Math.sqrt(w * w + h * h)
+            const {x, y, width, height} = btn.getBoundingClientRect()
+            console.log(x, y, width, height)
+            const radius = Math.sqrt(width * width + height * height)
             btn.style.setProperty('--diameter', radius * 2 + 'px')
             const {clientX, clientY} = e
-            const left = (clientX - x - radius) / w * 100 + '%'
-            const top = (clientY - y - radius) / h * 100 + '%'
+            const left = (clientX - x - radius) / width * 100 + '%'
+            const top = (clientY - y - radius) / height * 100 + '%'
 
             btn.style.setProperty('--left', left)
             btn.style.setProperty('--top', top)
+            btn.style.setProperty('--a', '')
+            setTimeout(()=>{
+                btn.style.setProperty('--a', 'ripple-effect 500ms linear')
+            })
         }
 
         btn.addEventListener('click', onClick)
